@@ -47,6 +47,7 @@ namespace Hermes {
 #include "types/GRaceStatus.h"
 #include "types/GRaceParameters.h"
 #include "types/GRaceDatabase.h"
+#include "types/GameFlowManager.h"
 #include "types/SimSystem.h"
 #include "types/PVehicle.h"
 

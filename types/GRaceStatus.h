@@ -381,7 +381,7 @@ public:
 	int mNumTimesBusted;
 	float mLeadingDistance;
 	unsigned int mCurrentGoal;
-	eastl::map<enum GRace::Type,enum FinishReason (__cdecl GRacerInfo::*)(enum FinishReason),eastl::less<enum GRace::Type>,bstl::allocator> mExtrapolateFinishFuncs;
+	eastl::map<enum GRace::Type,enum FinishReason (GRacerInfo::*)(enum FinishReason),eastl::less<enum GRace::Type>,bstl::allocator> mExtrapolateFinishFuncs;
 	bool mUpdateDistanceToFinish;
 };
 static_assert(sizeof(GRacerInfo) == 0x450);
