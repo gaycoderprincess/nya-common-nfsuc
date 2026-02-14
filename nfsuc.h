@@ -26,13 +26,29 @@ namespace Hermes {
 #include "types/eastl.h"
 #include "types/bNode.h"
 #include "types/Attrib.h"
+#include "types/ListableSet.h"
 #include "types/UCOM.h"
 #include "types/UMath.h"
 #include "types/Physics.h"
 #include "types/VehicleCustomizations.h"
 #include "types/IAttachable.h"
+#include "types/IPlayer.h"
 #include "types/ISimable.h"
 #include "types/IVehicle.h"
+#include "types/ITransmission.h"
+#include "types/IEngine.h"
+#include "types/IRigidBody.h"
+#include "types/IRBVehicle.h"
+#include "types/IHumanAI.h"
+#include "types/IInput.h"
+#include "types/INIS.h"
+#include "types/ICopMgr.h"
+#include "types/GRace.h"
+#include "types/GRaceStatus.h"
+#include "types/GRaceParameters.h"
+#include "types/GRaceDatabase.h"
+#include "types/SimSystem.h"
+#include "types/PVehicle.h"
 
 class cRenderGlobals {
 public:
@@ -42,7 +58,14 @@ public:
 	static inline auto& mInstance = *(cRenderGlobals**)0xDF1DE0;
 };
 
+class DALPauseStates {
+public:
+	static inline auto& mPauseRequest = *(int*)0xD8E238;
+};
+
 auto bInitTicker = (void(*)(float))0x4B04E0;
+
+auto LZDecompress = (uint32_t(*)(uint8_t* pSrc, uint8_t* pDst))0x6A6390;
 
 auto& GameWindow = *(HWND*)0xDF1DF8;
 auto& GameD3DDevice = *(IDirect3DDevice9**)0xEA0110;

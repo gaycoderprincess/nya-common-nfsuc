@@ -50,8 +50,8 @@ namespace Attrib {
 		void* mLayout;
 		Vault* mSource;
 
-		//static inline auto GetData = (void*(__thiscall*)(Collection*, uint32_t attributeKey, uint32_t index))0x52B5D0;
-		//static inline auto GetNode = (Attrib::Node*(__thiscall*)(Collection*, uint32_t attributeKey, const Attrib::Collection **container))0x52B530;
+		static inline auto GetData = (void*(__thiscall*)(Collection*, uint32_t attributeKey, uint32_t index))0x464680;
+		static inline auto GetNode = (Attrib::Node*(__thiscall*)(Collection*, uint32_t attributeKey, const Attrib::Collection **container))0x4649B0;
 	};
 
 	class Instance {
@@ -63,17 +63,17 @@ namespace Attrib {
 
 		Instance() {}
 
-		//Instance(const Collection* collection, uint32_t msgPort) {
-		//	((Instance*(__thiscall*)(Instance*, const Collection*, uint32_t))0x52AA00)(this, collection, msgPort);
-		//}
+		Instance(const Collection* collection, uint32_t msgPort) {
+			((Instance*(__thiscall*)(Instance*, const Collection*, uint32_t))0x462C80)(this, collection, msgPort);
+		}
 		//~Instance() {
 		//	((void(__thiscall*)(Instance*))0x5301F0)(this);
 		//}
 
-		//static inline auto GetAttributePointer = (void*(__thiscall*)(Instance*, uint32_t attributeKey, uint32_t index))0x52B950;
+		static inline auto GetAttributePointer = (void*(__thiscall*)(Instance*, uint32_t attributeKey, uint32_t index))0x4649B0;
 	};
 
-	//auto FindCollection = (Collection*(__cdecl*)(uint32_t classKey, uint32_t collectionKey))0x52CD40;
+	auto FindCollection = (Collection*(__cdecl*)(uint32_t classKey, uint32_t collectionKey))0x464A20;
 	auto StringToKey = (uint32_t(__cdecl*)(const char*))0x463A80;
 	auto StringHash32 = StringToKey; // rename
 };

@@ -206,5 +206,5 @@ public:
 	virtual bool CanFlashHeadlights();
 };
 
-//#define VEHICLE_LIST UTL::ListableSet<IVehicle, 12, eVehicleList, VEHICLE_MAX, 0xACE100>
-//static_assert(sizeof(VEHICLE_LIST::_buckets[0]) == 0x40);
+#define VEHICLE_LIST UTL::ListableSet<IVehicle, 30, eVehicleList, VEHICLE_MAX, 0xDE9348>
+static_assert(sizeof(VEHICLE_LIST::_buckets[0]) == 0x88);
