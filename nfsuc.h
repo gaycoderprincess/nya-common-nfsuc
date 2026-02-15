@@ -61,6 +61,9 @@ struct type_bStringHash {
 #include "types/CarTypeInfo.h"
 #include "types/GMW2Game.h"
 #include "types/AttribGen.h"
+#include "types/FEPlayerCarDB.h"
+#include "types/UserProfile.h"
+#include "types/eView.h"
 
 class GManager {
 public:
@@ -86,6 +89,7 @@ public:
 auto bInitTicker = (void(*)(float))0x4B04E0;
 
 auto& Tweak_ForceStraightPursuit = *(int*)0xD82118;
+auto& SkipMovies = *(bool*)0xDAA18C;
 
 auto LZDecompress = (uint32_t(*)(uint8_t* pSrc, uint8_t* pDst))0x6A6390;
 

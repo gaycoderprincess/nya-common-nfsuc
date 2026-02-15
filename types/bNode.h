@@ -18,3 +18,6 @@ public:
 		return (void*)HeadNode == (void*)&this;
 	}
 };
+
+template<typename T>
+class bTList : public bList<T> {};
