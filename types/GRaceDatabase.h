@@ -34,9 +34,17 @@ public:
 	static inline auto& mObj = *(GRaceDatabase**)0xD9B924;
 
 	static inline auto GetRaceFromHash = (GRaceParameters*(__thiscall*)(GRaceDatabase*, uint32_t))0x6217D0;
-	//static inline auto AllocCustomRace = (GRaceCustom*(__thiscall*)(GRaceDatabase*, GRaceParameters*))0x;
-	//static inline auto FreeCustomRace = (GRaceCustom*(__thiscall*)(GRaceDatabase*, GRaceParameters*))0x;
-	//static inline auto SetStartupRace = (void(__thiscall*)(GRaceDatabase*, GRaceCustom*, GRace::Context))0x;
+	static inline auto AllocCustomRace = (GRaceCustom*(__thiscall*)(GRaceDatabase*, GRaceParameters*))0x649550;
+	static inline auto DestroyCustomRace = (GRaceCustom*(__thiscall*)(GRaceDatabase*, GRaceParameters*))0x5FD830;
+	static inline auto ClearStartupRace = (void(__thiscall*)(GRaceDatabase*))0x5FD890;
 
 	static inline auto GetStartupRace = (GRaceCustom*(__thiscall*)(GRaceDatabase*))0x6E8AF0;
+
+	void SetStartupRace(GRaceCustom* custom, GRace::Context context) {
+		if (mStartupRace) {
+			GRaceDatabase::ClearStartupRace(this);
+		}
+		mStartupRaceContext = context;
+		mStartupRace = custom;
+	}
 };

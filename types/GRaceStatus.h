@@ -67,6 +67,7 @@ public:
 
 	static inline auto& mInstance = *(IRaceStatus**)0xDE6DC8;
 
+	// todo this vtable is completely inaccurate
 	virtual void _vt0();
 	virtual void FinalizeStatistics();
 	virtual void CalculateRankings();
@@ -104,7 +105,7 @@ public:
 	virtual void StopMasterTimer();
 	virtual bool IsRaceTimeElapsing();
 	virtual float GetRaceTimeElapsed();
-	virtual void AdvanceTime(__int64);
+	virtual void AdvanceTime(int64_t);
 	virtual bool GetIsTimeLimited();
 	virtual float GetRaceTimeRemaining();
 	virtual void ClearTimes();
@@ -141,10 +142,10 @@ public:
 	virtual bool IsCareerEvent();
 	virtual bool IsHurryUpTimerRunning();
 	virtual bool IsMoneyPickedUp();
-	virtual void SkipToEndOfRaceForRacer(ISimable *, int, float);
-	virtual void SkipToEndOfRaceInPlace(int, float);
-	virtual void TeleportAllRacersToJustBeforeTheEndOfTheRaceAndPretendTheyRacedThere();
-	virtual bool WasPartOfRaceSkipped();
+	//virtual void SkipToEndOfRaceForRacer(ISimable *, int, float);
+	//virtual void SkipToEndOfRaceInPlace(int, float);
+	//virtual void TeleportAllRacersToJustBeforeTheEndOfTheRaceAndPretendTheyRacedThere();
+	//virtual bool WasPartOfRaceSkipped();
 	virtual void ClearRacers();
 	virtual GRacerInfo *AddSimablePlayer(ISimable *);
 	virtual int AddRacer(GRuntimeInstance *);
@@ -160,7 +161,7 @@ public:
 	virtual void AddCheckpoint(GRuntimeInstance *);
 	virtual void SetNextCheckpointPos(GRuntimeInstance *);
 	virtual void DetermineRaceLength();
-	virtual bool GetNodeRaceDistance(unsigned __int16, float *);
+	virtual bool GetNodeRaceDistance(uint16_t, float *);
 	virtual float DATAtCheckpoint(int);
 	virtual int GetNumRaceSegments();
 	virtual bool GetRaceRouteError();
@@ -176,13 +177,13 @@ public:
 	virtual void SetRevealed(int);
 	virtual bool IsSlowcut(int);
 	virtual int GetShortcutPair(int);
-	virtual int GetSideRouteShortcutNumber(__int16);
+	virtual int GetSideRouteShortcutNumber(int16_t);
 	virtual bool WasExitSegmentReachedByActivatedPathy(int);
 	virtual void SetExitSegmentReachedByActivatedPathy(int);
 	virtual bool WasExittedByActivatedPathy(int);
 	virtual void SetExittedByActivatedPathy(int);
 	virtual int GetIndexOfLastShortcutInRace();
-	virtual bool IsPrimaryRaceSegment(__int16);
+	virtual bool IsPrimaryRaceSegment(int16_t);
 	virtual float GetAdaptiveDifficutly();
 	virtual void UpdateAdaptiveDifficulty(eAdaptiveGainReason, ISimable *);
 	virtual void ComputeAdaptiveDifficulty();

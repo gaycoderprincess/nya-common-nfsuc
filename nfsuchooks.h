@@ -79,6 +79,7 @@ namespace NyaHooks {
 			NyaHookLib::Patch(0x75630B, &HookedFunction);
 		}
 	}
+
 	namespace LateInitHook {
 		std::vector<void(*)()> aPreFunctions;
 		std::vector<void(*)()> aFunctions;
@@ -113,7 +114,7 @@ namespace NyaHooks {
 
 		void Init() {
 			if (OrigFunction) return;
-			OrigFunction = (void(__thiscall*)(void*))NyaHookLib::PatchRelative(NyaHookLib::CALL, 0x6A7E83, &HookedFunction);
+			OrigFunction = (void(__thiscall*)(void*))NyaHookLib::PatchRelative(NyaHookLib::CALL, 0x67BD33, &HookedFunction);
 		}
 	}
 }

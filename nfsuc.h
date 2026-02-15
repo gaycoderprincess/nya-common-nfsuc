@@ -50,6 +50,23 @@ namespace Hermes {
 #include "types/GameFlowManager.h"
 #include "types/SimSystem.h"
 #include "types/PVehicle.h"
+#include "types/IGameStatus.h"
+
+class GHub {
+public:
+	static inline auto& sCurrentHub = *(GHub**)0xD9B974;
+
+	static inline auto StartEventFromKey = (void(__thiscall*)(GHub*, int))0x633820;
+	static inline auto StartCurrentEvent = (void(__thiscall*)(GHub*))0x6338C0;
+};
+
+class GManager {
+public:
+	static inline auto& mObj = *(GManager**)0xD9B7E4;
+
+	static inline auto ConnectRuntimeInstances = (void(__thiscall*)(GManager*))0x630B70;
+	static inline auto StartRaceActivityFromInGame = (void(__thiscall*)(GManager*, GRaceParameters*))0x639E40;
+};
 
 class cRenderGlobals {
 public:
@@ -65,6 +82,8 @@ public:
 };
 
 auto bInitTicker = (void(*)(float))0x4B04E0;
+
+auto& Tweak_ForceStraightPursuit = *(int*)0xD82118;
 
 auto LZDecompress = (uint32_t(*)(uint8_t* pSrc, uint8_t* pDst))0x6A6390;
 

@@ -16,6 +16,11 @@ public:
 	void (*pLoopingFunction)();
 	const char *pLoopingFunctionName;
 	GameFlowState CurrentGameFlowState;
+
+	static inline auto LoadTrack = (void(__thiscall*)(GameFlowManager*))0x69E330;
+	static inline auto LoadFrontend = (void(__thiscall*)(GameFlowManager*))0x69E300;
+	static inline auto UnloadFrontend = (void(__thiscall*)(GameFlowManager*))0x6AE650;
+	static inline auto ReloadTrack = (void(__thiscall*)(GameFlowManager*))0x69E3A0;
 };
 static_assert(sizeof(GameFlowManager) == 0xC);
 

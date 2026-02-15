@@ -25,6 +25,30 @@ namespace Game {
 }
 
 class GRaceIndexData {
+public:
+	enum {
+		kFlag_InitiallyUnlockedQuickRace = 0x1,
+		kFlag_InitiallyUnlockedOnline = 0x2,
+		kFlag_InitiallyUnlockedChallenge = 0x4,
+		kFlag_IsDDayRace = 0x10,
+		kFlag_IsBossRace = 0x20,
+		kFlag_IsMarkerRace = 0x40,
+		kFlag_IsPursuitRace = 0x80,
+		kFlag_IsLoopingRace = 0x100,
+		kFlag_RankPlayersByPoints = 0x200,
+		kFlag_RankPlayersByDistance = 0x400,
+		kFlag_CopsEnabled = 0x800,
+		kFlag_ScriptedCopsInRace = 0x1000,
+		kFlag_NeverInQuickRace = 0x4000,
+		kFlag_IsChallengeSeriesRace = 0x8000,
+		kFlag_IsCollectorsEditionRace = 0x10000,
+		kFlag_UsePresetRide = 0x200000,
+		kFlag_IsTeamEvent = 0x400000,
+		kFlag_IsMasterEvent = 0x800000,
+		kFlag_StoryCritical = 0x1000000,
+		//kFlag_ = 0x2000000,
+	};
+
 	unsigned int mKey;
 	char mEventID[10];
 	int16_t mChallengeGoal;
@@ -36,7 +60,7 @@ class GRaceIndexData {
 	int16_t mCash;
 	int16_t mCashDominate;
 	uint16_t mRivalBest;
-	unsigned __int8 mNumLaps;
+	uint8_t mNumLaps;
 	char mCopDensity;
 	char mRaceType;
 	char mEventVariant;
@@ -142,6 +166,8 @@ public:
 	bool mNosEnabled;
 	int mHeatLevel;
 	GRaceIndexData mCustomIndexData;
+
+	static inline auto CreateRaceActivity = (void(__thiscall*)(GRaceCustom*))0x63BF80;
 
 	//static inline auto SetReversed = (void(__thiscall*)(GRaceCustom*, bool))0x;
 	//static inline auto SetNumLaps = (void(__thiscall*)(GRaceCustom*, int))0x;
