@@ -16,6 +16,7 @@ public:
 	static inline auto& sInstance = *(GEvent**)0xD9B7F4;
 
 	static inline auto ClearOpponents = (void(__thiscall*)(GEvent*))0x61FB90;
+	static inline auto Cleanup = (void(__thiscall*)(GEvent*))0x628260;
 	static inline auto Prepare = (void(__thiscall*)(GEvent*))0x646C10;
 };
 static_assert(sizeof(GEvent) == 0x60);

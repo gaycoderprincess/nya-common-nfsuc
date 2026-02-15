@@ -23,6 +23,10 @@ namespace Hermes {
 	typedef uint32_t _h_HHANDLER__;
 }
 
+struct type_bStringHash {
+	unsigned int hash;
+};
+
 #include "types/eastl.h"
 #include "types/bNode.h"
 #include "types/Attrib.h"
@@ -55,6 +59,8 @@ namespace Hermes {
 #include "types/GHub.h"
 #include "types/GEvent.h"
 #include "types/CarTypeInfo.h"
+#include "types/GMW2Game.h"
+#include "types/AttribGen.h"
 
 class GManager {
 public:

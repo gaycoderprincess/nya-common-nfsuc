@@ -73,6 +73,19 @@ namespace Attrib {
 		static inline auto GetAttributePointer = (void*(__thiscall*)(Instance*, uint32_t attributeKey, uint32_t index))0x4649B0;
 	};
 
+	class StringKey {
+	public:
+		unsigned int mHash32;
+		const char *mString;
+	};
+
+	class RefSpec {
+	public:
+		unsigned int mClassKey;
+		unsigned int mCollectionKey;
+		const Attrib::Collection *mCollectionPtr;
+	};
+
 	auto FindCollection = (Collection*(__cdecl*)(uint32_t classKey, uint32_t collectionKey))0x464A20;
 	auto StringToKey = (uint32_t(__cdecl*)(const char*))0x463A80;
 	auto StringHash32 = StringToKey; // rename

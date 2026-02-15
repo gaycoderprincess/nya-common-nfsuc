@@ -6,6 +6,15 @@ namespace GRace {
 		kRaceDifficulty_NumDifficulties = 3,
 	};
 
+	enum Tier {
+		kRaceTier_None = 0,
+		kRaceTier_1 = 1,
+		kRaceTier_2 = 2,
+		kRaceTier_3 = 3,
+		kRaceTier_4 = 4,
+		kRaceTier_NumTiers = 5,
+	};
+
 	enum Context {
 		kRaceContext_QuickRace = 0,
 		kRaceContext_TimeTrial = 1,
