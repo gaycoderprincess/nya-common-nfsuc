@@ -274,7 +274,7 @@ struct GArbitratedRacerStats {
 	float mDragWheelieDistance;
 };
 
-class GRacerInfo {
+class GRacerInfo : public GElapsedCallback {
 public:
 	enum {
 		kMaxTimers = 0x1,
@@ -386,6 +386,7 @@ public:
 	bool mUpdateDistanceToFinish;
 };
 static_assert(sizeof(GRacerInfo) == 0x450);
+static_assert(offsetof(GRacerInfo, mName) == 0x14);
 
 class GKnockoutRacer {
 public:

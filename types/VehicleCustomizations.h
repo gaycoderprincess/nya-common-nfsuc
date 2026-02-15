@@ -186,6 +186,7 @@ public:
 	PackedVinylColor color;
 };
 
+class RideInfo;
 class VehicleCustomizations {
 public:
 	class InstalledPart {
@@ -219,5 +220,8 @@ public:
 	VinylsAttrib::VinylFinish vinylFinish;
 	unsigned int PresetRide;
 	CAR_SLOT_ID RemovedParts[4];
+
+	static inline auto ReadFrom = (void(__thiscall*)(VehicleCustomizations*, Attrib::Instance*))0x884510;
+	static inline auto WriteTo = (void(__thiscall*)(VehicleCustomizations*, RideInfo*))0x885340;
 };
 static_assert(sizeof(VehicleCustomizations) == 0x9EC);

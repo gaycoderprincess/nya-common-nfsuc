@@ -50,9 +50,11 @@ namespace Hermes {
 #include "types/GameFlowManager.h"
 #include "types/SimSystem.h"
 #include "types/PVehicle.h"
+#include "types/RideInfo.h"
 #include "types/IGameStatus.h"
 #include "types/GHub.h"
 #include "types/GEvent.h"
+#include "types/CarTypeInfo.h"
 
 class GManager {
 public:
