@@ -34,6 +34,7 @@ public:
 	static inline auto& mObj = *(GRaceDatabase**)0xD9B924;
 
 	static inline auto GetRaceFromHash = (GRaceParameters*(__thiscall*)(GRaceDatabase*, uint32_t))0x6217D0;
+	static inline auto GetRaceFromKey = (GRaceParameters*(__thiscall*)(GRaceDatabase*, uint32_t))0x5FD720;
 	static inline auto AllocCustomRace = (GRaceCustom*(__thiscall*)(GRaceDatabase*, GRaceParameters*))0x649550;
 	static inline auto DestroyCustomRace = (GRaceCustom*(__thiscall*)(GRaceDatabase*, GRaceParameters*))0x5FD830;
 	static inline auto ClearStartupRace = (void(__thiscall*)(GRaceDatabase*))0x5FD890;

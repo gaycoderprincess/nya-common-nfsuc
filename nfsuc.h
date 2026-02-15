@@ -51,14 +51,8 @@ namespace Hermes {
 #include "types/SimSystem.h"
 #include "types/PVehicle.h"
 #include "types/IGameStatus.h"
-
-class GHub {
-public:
-	static inline auto& sCurrentHub = *(GHub**)0xD9B974;
-
-	static inline auto StartEventFromKey = (void(__thiscall*)(GHub*, int))0x633820;
-	static inline auto StartCurrentEvent = (void(__thiscall*)(GHub*))0x6338C0;
-};
+#include "types/GHub.h"
+#include "types/GEvent.h"
 
 class GManager {
 public:
