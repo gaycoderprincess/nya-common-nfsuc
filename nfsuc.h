@@ -65,6 +65,13 @@ struct type_bStringHash {
 #include "types/UserProfile.h"
 #include "types/eView.h"
 
+namespace FE {
+	class FEPauseStateManager {
+	public:
+		static inline auto CallERestartRace = (void(__thiscall*)(FEPauseStateManager*))0x563CE0;
+	};
+}
+
 class GManager {
 public:
 	static inline auto& mObj = *(GManager**)0xD9B7E4;
