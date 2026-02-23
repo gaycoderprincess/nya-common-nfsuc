@@ -16,8 +16,10 @@ enum BluePrintType {
 
 typedef uint32_t HSIMABLE__;
 typedef uint32_t HCAUSE__;
+typedef uint32_t HSIMPROFILE__;
 typedef HSIMABLE__* HSIMABLE;
 typedef HCAUSE__* HCAUSE;
+typedef HSIMPROFILE__* HSIMPROFILE;
 
 namespace Hermes {
 	typedef uint32_t _h_HHANDLER__;
@@ -64,6 +66,7 @@ struct type_bStringHash {
 #include "types/FEPlayerCarDB.h"
 #include "types/UserProfile.h"
 #include "types/eView.h"
+#include "types/ChassisSimple.h"
 
 namespace FE {
 	class FEPauseStateManager {

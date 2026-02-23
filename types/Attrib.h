@@ -3,6 +3,10 @@ namespace Attrib {
 	class Definition;
 	class ClassPrivate;
 
+	struct Private {
+		uint8_t mData[8];
+	};
+
 	class Class {
 	public:
 		unsigned int mKey;

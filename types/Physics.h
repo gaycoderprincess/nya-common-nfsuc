@@ -106,6 +106,55 @@ namespace Physics {
 		};
 	}
 
+	namespace Core {
+		namespace Aerodynamics {
+			struct State {
+				UMath::Matrix4 bodyMatrix;
+				UMath::Vector3 linearVelocity;
+				UMath::Vector3 angularVelocity;
+				UMath::Vector3 carLocalVelocity;
+				UMath::Vector3 centerOfGravity;
+				UMath::Vector3 carBodyDimension;
+				float dragCoefficient;
+				float draftingCoefficient;
+				float draftedCoefficient;
+				float aeroCG;
+				float aeroCoefficient;
+				float liftHeightRatio;
+				float bodyRideHeightNoDownforce;
+				float frontToRearHeightRatio;
+				float aeroCoefficientMaxGroundEffect;
+				float aeroCoefficientMaxLift;
+				float aeroCoefficient90DegLoss;
+				float gasInput;
+				float carSpeed;
+				float slipAngle;
+				float minHeightAtRest;
+				float bodyRideHeight;
+				float groundEffect;
+				float groundEffectHeightRatio;
+				float deltaHeightSlope;
+				float aeroFrontZ;
+				float aeroRearZ;
+				float liftTimer;
+				float dT;
+				float driver_style;
+			};
+
+			struct Result {
+				UMath::Vector3 dragForce;
+				UMath::Vector3 dragCenter;
+				UMath::Vector3 windCenter;
+				UMath::Vector3 downForce;
+				UMath::Vector3 downCenter;
+				UMath::Vector3 sideForce;
+				UMath::Vector3 sideCenter;
+				float liftTimer;
+				UMath::Vector3 dragTorque;
+			};
+		}
+	}
+
 	class Tunings {
 	public:
 		float Value[7];
