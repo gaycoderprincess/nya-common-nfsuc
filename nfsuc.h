@@ -43,7 +43,10 @@ struct type_bStringHash {
 #include "types/IVehicle.h"
 #include "types/ITransmission.h"
 #include "types/IEngine.h"
+#include "types/IEngineDamage.h"
 #include "types/IRigidBody.h"
+#include "types/ICollisionBody.h"
+#include "types/ISpikeable.h"
 #include "types/IRBVehicle.h"
 #include "types/IHumanAI.h"
 #include "types/IInput.h"
@@ -94,6 +97,19 @@ public:
 class DALPauseStates {
 public:
 	static inline auto& mPauseRequest = *(int*)0xD8E238;
+};
+
+class TableBase {
+public:
+	int NumEntries;
+	float MinArg;
+	float MaxArg;
+	float IndexMultiplier;
+};
+
+class Table : public TableBase {
+public:
+	const float* pTable;
 };
 
 auto bInitTicker = (void(*)(float))0x4B04E0;
