@@ -20,20 +20,90 @@ public:
 	VariableArray Y2;
 	bool allocatedMemory;
 
-	static inline auto GetValue = (float(__thiscall*)(Curve*, float xx))0x706380;
-	static inline auto GetValueLinear = (float(__thiscall*)(Curve*, float xx))0x7064A0;
+	auto GetValue(float xx) {
+		auto f = (float(__thiscall*)(Curve*, float xx))0x706380;
+		return f(this, xx);
+	}
+	auto GetValueLinear(float xx) {
+		auto f = (float(__thiscall*)(Curve*, float xx))0x7064A0;
+		return f(this, xx);
+	}
 };
 
 class AxlePair {
 public:
 	float Front;
 	float Rear;
+
+	float At(int index) const {
+		return (&Front)[index];
+	}
 };
 
 class AxlePairCurve {
 public:
 	Curve Front;
 	Curve Rear;
+
+	Curve At(int index) const {
+		return (&Front)[index];
+	}
+};
+
+enum eDecalType {
+	DECAL_TYPE_NONE = -1,
+	DECAL_TYPE_SKID_CONCRETE = 0,
+	DECAL_TYPE_SKID_DIRT = 1,
+	DECAL_TYPE_SKID_GRASS = 2,
+	DECAL_TYPE_SKID_SAND = 3,
+	DECAL_TYPE_SCRAPE_METAL = 4,
+	DECAL_TYPE_SCRAPE_PLASTIC = 5,
+	DECAL_TYPE_SCRAPE_WOOD = 6,
+	DECAL_TYPE_SCRAPE_CONCRETE = 7,
+};
+
+enum SCRAPE_SURFACES {
+	SCRAPE_NONE = 0,
+	SCRAPE_CONCRETE = 1,
+	SCRAPE_METAL = 2,
+	SCRAPE_RUBBER = 3,
+	SCRAPE_OFFROAD = 4,
+	MAX_SCRAPES = 5,
+};
+
+enum SURFACE_SFX {
+	SURFACE_SFX_NONE = 0,
+	SURFACE_SFX_LIGHT_CRACK = 1,
+	SURFACE_SFX_TAR_STRIP = 3,
+	SURFACE_SFX_ROADSIDE_PATCH = 5,
+	SURFACE_SFX_HEAVY_PATCH = 6,
+	SURFACE_SFX_DIRT = 7,
+	MAX_SURFACE_SFX = 8,
+};
+
+enum TireCondition {
+	kGrip = 0,
+	kWet = 1,
+	kFlat = 2,
+	kDrift = 3,
+	kDrag = 4,
+};
+
+class TireEffectRecord {
+public:
+	TireCondition mTireCondition;
+	Attrib::RefSpec mEmitter;
+	Attrib::RefSpec mEmitterLowLod;
+	float mMinSpeed;
+	float mMaxSpeed;
+};
+
+class RoadNoiseRecord {
+public:
+	float Frequency;
+	float Amplitude;
+	float MinSpeed;
+	float MaxSpeed;
 };
 
 namespace Attrib {
@@ -59,7 +129,7 @@ namespace Attrib {
 				((void(__thiscall*)(presetride*))0x468820)(this);
 			}
 
-			_LayoutStruct* GetLayout() {
+			_LayoutStruct* GetLayout() const {
 				return (_LayoutStruct*)mLayoutPtr;
 			}
 		};
@@ -83,7 +153,7 @@ namespace Attrib {
 				((void(__thiscall*)(pvehicle*))0x468820)(this);
 			}
 
-			_LayoutStruct* GetLayout() {
+			_LayoutStruct* GetLayout() const {
 				return (_LayoutStruct*)mLayoutPtr;
 			}
 		};
@@ -235,7 +305,40 @@ namespace Attrib {
 				((void(__thiscall*)(car_tuning*))0x468820)(this);
 			}
 
-			_LayoutStruct* GetLayout() {
+			_LayoutStruct* GetLayout() const {
+				return (_LayoutStruct*)mLayoutPtr;
+			}
+		};
+
+		class simsurface : public Attrib::Instance {
+		public:
+			struct _LayoutStruct {
+				Attrib::Private _Array_TireSlipEffects;
+				TireEffectRecord TireSlipEffects[5];
+				const char *CollectionName;
+				RoadNoiseRecord RenderNoise;
+				float WORLD_FRICTION;
+				SURFACE_SFX SurfaceFX_ID;
+				float STICK;
+				SCRAPE_SURFACES ScrapeFX_ID;
+				float ROLLING_RESISTANCE;
+				float LATERAL_GRIP;
+				float GROUND_FRICTION;
+				float DRIVE_GRIP;
+				eDecalType Decal;
+				uint16_t WheelEffectFrequency;
+				uint8_t WheelEffectIntensity;
+			};
+
+			simsurface() {}
+			simsurface(const Attrib::Collection *collection, uint32_t msgPort) {
+				((simsurface*(__thiscall*)(simsurface*, const Attrib::Collection*, uint32_t))0x75F9E0)(this, collection, msgPort);
+			}
+			~simsurface() {
+				((void(__thiscall*)(simsurface*))0x468820)(this);
+			}
+
+			_LayoutStruct* GetLayout() const {
 				return (_LayoutStruct*)mLayoutPtr;
 			}
 		};

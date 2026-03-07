@@ -64,6 +64,11 @@ public:
 	WSurface fSurface;
 	unsigned int fFaceValid;
 	bool mCacheable;
+
+	WWorldPos() {
+		memset(this,0,sizeof(*this));
+		fYOffset = 0.025;
+	}
 };
 
 class WaveData3 {

@@ -77,6 +77,7 @@ struct type_bStringHash {
 #include "types/eView.h"
 #include "types/IAttributeable.h"
 #include "types/ChassisSimple.h"
+#include "types/FastMem.h"
 
 class BehaviorParams {
 public:
@@ -122,11 +123,32 @@ public:
 	float MinArg;
 	float MaxArg;
 	float IndexMultiplier;
+
+	TableBase() {}
+
+	TableBase(int num, float min, float max) {
+		NumEntries = num;
+		MinArg = min;
+		MaxArg = max;
+		IndexMultiplier = (NumEntries - 1) / (MaxArg - MinArg);
+	}
 };
 
 class Table : public TableBase {
 public:
 	const float* pTable;
+
+	Table(const float *table, int num, float min, float max) : TableBase(num, min, max), pTable(table) {}
+
+	Table(const float* table, int numEntries, float minArg, float maxArg, float indexMultiplier) {
+		pTable = table;
+		NumEntries = numEntries;
+		MinArg = minArg;
+		MaxArg = maxArg;
+		IndexMultiplier = indexMultiplier;
+	}
+
+	float GetValue(float input); // todo does this exist in uc?
 };
 
 auto bInitTicker = (void(*)(float))0x4B04E0;
