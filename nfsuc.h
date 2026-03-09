@@ -153,6 +153,7 @@ public:
 };
 
 auto bInitTicker = (void(*)(float))0x4B04E0;
+auto bATan = (int16_t(*)(float, float))0x4B1030;
 
 auto& Tweak_ForceStraightPursuit = *(int*)0xD82118;
 auto& SkipMovies = *(bool*)0xDAA18C;

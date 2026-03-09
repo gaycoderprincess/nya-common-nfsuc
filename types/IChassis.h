@@ -7,7 +7,7 @@ public:
 
 	virtual char *GetChassisName();
 	virtual float GetWheelTraction(unsigned int);
-	virtual float GetWheelDynamicSlipAngle(unsigned int);
+	//virtual float GetWheelDynamicSlipAngle(unsigned int);
 	virtual float GetWheelSlipRatio(unsigned int);
 	virtual float GetDragBoost();
 	virtual unsigned int GetNumWheels();
@@ -20,8 +20,10 @@ public:
 	virtual float GetWheelRoadHeight(unsigned int);
 	virtual bool IsWheelOnGround(unsigned int);
 	virtual float GetCompression(unsigned int);
+	virtual float GetSuspensionMaxTravel(unsigned int);
 	virtual float GuessCompression(unsigned int, float);
 	virtual void ForceCompression(unsigned int, float);
+	virtual void DecompressShocks();
 	virtual float GetWheelSlip(unsigned int);
 	virtual float GetToleratedSlip(unsigned int);
 	virtual float GetWheelSkid(unsigned int);
