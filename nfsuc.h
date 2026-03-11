@@ -78,6 +78,7 @@ struct type_bStringHash {
 #include "types/eView.h"
 #include "types/IAttributeable.h"
 #include "types/ChassisSimple.h"
+#include "types/ICEManager.h"
 #include "types/FastMem.h"
 
 class CameraAI {
