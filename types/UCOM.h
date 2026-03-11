@@ -32,7 +32,11 @@ namespace UCOM {
 			return p != nullptr;
 		}
 
-		virtual ~IUnknown() {};
+#ifdef _MSC_VER
+		virtual ~IUnknown() {}
+#else
+		virtual void vf0() {}
+#endif
 	};
 
 	static_assert(sizeof(IUnknown) == 0x8);
