@@ -37,7 +37,7 @@ public:
 	virtual ISimable *GetOwner();
 	virtual bool IsOwnedBy(ISimable *);
 	virtual void SetOwnerObject(ISimable *);
-	virtual const Attrib::Instance *GetAttributes();
+	virtual const Attrib::Gen::pvehicle *GetAttributes();
 	virtual const IRigidBody *_GetRigidBody();
 	virtual IRigidBody *GetRigidBody();
 	virtual bool IsRigidBodySimple();

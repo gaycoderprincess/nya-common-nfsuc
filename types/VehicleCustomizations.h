@@ -130,14 +130,6 @@ enum CAR_SLOT_ID {
 	CARSLOTID_DECAL_MODEL_NUM = 0x2,
 };
 
-enum KIT_TYPE {
-	KIT_TYPE_BASE = 0,
-	KIT_TYPE_STOCK = 1,
-	KIT_TYPE_AUTOSCULPT = 2,
-	KIT_TYPE_WIDEBODY = 3,
-	NUM_KIT_TYPE = 4,
-};
-
 struct CarPaintRecordPacked {
 	unsigned int group;
 	uint8_t hue;
