@@ -18,6 +18,10 @@ namespace UCOM {
 		void Add(T* ref) {
 			return ((void(__thiscall*)(Object*, uint32_t, T*))(0x5F6A60))(this, T::IHandle, ref);
 		}
+		template<typename T>
+		void Remove(T* ref) {
+			return ((void(__thiscall*)(Object*, T*))(0x5F6900))(this, ref);
+		}
 	};
 	static_assert(sizeof(Object) == 0x10);
 
@@ -35,7 +39,7 @@ namespace UCOM {
 #ifdef _MSC_VER
 		virtual ~IUnknown() {}
 #else
-		virtual void vf0() {}
+		virtual void vf0(char a1) {}
 #endif
 	};
 

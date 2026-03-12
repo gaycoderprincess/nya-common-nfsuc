@@ -72,6 +72,7 @@ namespace Attrib {
 
 		static inline auto GetData = (void*(__thiscall*)(Collection*, uint32_t attributeKey, uint32_t index))0x464680;
 		static inline auto GetNode = (Attrib::Node*(__thiscall*)(Collection*, uint32_t attributeKey, const Attrib::Collection **container))0x4649B0;
+		static inline auto Release = (void(__thiscall*)(Collection*, uint32_t who))0x468820;
 	};
 	static_assert(offsetof(Collection, mParent) == 0xC);
 

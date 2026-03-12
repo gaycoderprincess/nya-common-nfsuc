@@ -184,7 +184,7 @@ public:
 	class InstalledPart {
 	public:
 		unsigned int part_key;
-		unsigned int kit_num;
+		int kit_num;
 	};
 
 	int16_t GUID[5];
