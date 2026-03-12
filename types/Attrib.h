@@ -6,7 +6,7 @@ namespace Attrib {
 	struct Private {
 		uint8_t mData[8];
 
-		auto GetLength() { auto f = (int(__thiscall*)(Private*))0x452940; return f(this); }
+		auto GetLength() { auto f = (int(__thiscall*)(Private*))0x463010; return f(this); }
 	};
 
 	class Class {
