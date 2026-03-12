@@ -14,4 +14,4 @@ public:
 	ICEController *mICEController;
 	ICEChannelManager *mChannelManager;
 };
-auto& TheICEManager = *(ICEManager*)0xD35E10;
+inline auto& TheICEManager = *(ICEManager*)0xD35E10;

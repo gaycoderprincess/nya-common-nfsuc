@@ -2,11 +2,11 @@
 
 namespace NyaHooks {
 	namespace D3DEndSceneHook {
-		std::vector<void(*)()> aFunctions;
-		std::vector<void(*)()> aPostFunctions;
+		inline std::vector<void(*)()> aFunctions;
+		inline std::vector<void(*)()> aPostFunctions;
 
-		auto OrigFunction = (void(*)())nullptr;
-		void HookedFunction() {
+		inline auto OrigFunction = (void(*)())nullptr;
+		inline void HookedFunction() {
 			for (auto& func : aFunctions) {
 				func();
 			}
@@ -16,17 +16,17 @@ namespace NyaHooks {
 			}
 		}
 		
-		void Init() {
+		inline void Init() {
 			if (OrigFunction) return;
 			OrigFunction = (void(*)())NyaHookLib::PatchRelative(NyaHookLib::JMP, 0x784534, &HookedFunction);
 		}
 	}
 	
 	namespace D3DResetHook {
-		std::vector<void(*)()> aFunctions;
+		inline std::vector<void(*)()> aFunctions;
 
-		auto OrigFunction = (void(*)())nullptr;
-		void HookedFunction() {
+		inline auto OrigFunction = (void(*)())nullptr;
+		inline void HookedFunction() {
 			for (auto& func : aFunctions) {
 				func();
 			}
@@ -34,46 +34,46 @@ namespace NyaHooks {
 		}
 
 
-		void Init() {
+		inline void Init() {
 			if (OrigFunction) return;
 			OrigFunction = (void(*)())NyaHookLib::PatchRelative(NyaHookLib::CALL, 0x755F9E, &HookedFunction);
 		}
 	}
 
-	void PlaceD3DHooks() {
+	inline void PlaceD3DHooks() {
 		D3DEndSceneHook::Init();
 		D3DResetHook::Init();
 	}
 
 	namespace InputBlockerHook {
-		bool bInputsBlocked = false;
+		inline bool bInputsBlocked = false;
 
-		std::vector<void(*)()> aFunctions;
+		inline std::vector<void(*)()> aFunctions;
 
-		auto OrigFunction = (bool(*)())nullptr;
-		bool HookedFunction() {
+		inline auto OrigFunction = (bool(*)())nullptr;
+		inline bool HookedFunction() {
 			if (bInputsBlocked) return true;
 			return OrigFunction();
 		}
 
-		void Init() {
+		inline void Init() {
 			if (OrigFunction) return;
 			OrigFunction = (bool(*)())NyaHookLib::PatchRelative(NyaHookLib::CALL, 0x69D52E, &HookedFunction);
 		}
 	}
 
 	namespace WndProcHook {
-		std::vector<void(*)(HWND, UINT, WPARAM, LPARAM)> aFunctions;
+		inline std::vector<void(*)(HWND, UINT, WPARAM, LPARAM)> aFunctions;
 
-		auto OrigFunction = (LRESULT(__stdcall*)(HWND, UINT, WPARAM, LPARAM))nullptr;
-		LRESULT __stdcall HookedFunction(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+		inline auto OrigFunction = (LRESULT(__stdcall*)(HWND, UINT, WPARAM, LPARAM))nullptr;
+		inline LRESULT __stdcall HookedFunction(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 			for (auto& func : aFunctions) {
 				func(hWnd, msg, wParam, lParam);
 			}
 			return OrigFunction(hWnd, msg, wParam, lParam);
 		}
 
-		void Init() {
+		inline void Init() {
 			if (OrigFunction) return;
 			OrigFunction = (LRESULT(__stdcall*)(HWND, UINT, WPARAM, LPARAM))(*(uintptr_t*)0x75630B);
 			NyaHookLib::Patch(0x75630B, &HookedFunction);
@@ -81,17 +81,17 @@ namespace NyaHooks {
 	}
 
 	namespace CameraMoverHook {
-		std::vector<void(*)(CameraMover*)> aFunctions;
+		inline std::vector<void(*)(CameraMover*)> aFunctions;
 
-		auto OrigFunction = (void(__thiscall*)(CameraMover*, float))nullptr;
-		void __thiscall HookedFunction(CameraMover* a1, float a2) {
+		inline auto OrigFunction = (void(__thiscall*)(CameraMover*, float))nullptr;
+		inline void __fastcall HookedFunction(CameraMover* a1, uintptr_t, float a2) {
 			OrigFunction(a1, a2);
 			for (auto& func : aFunctions) {
 				func(a1);
 			}
 		}
 
-		void Init() {
+		inline void Init() {
 			if (OrigFunction) return;
 			OrigFunction = (void(__thiscall*)(CameraMover*, float))(*(uintptr_t*)0xBE4948);
 			NyaHookLib::Patch(0xBE4948, &HookedFunction);
@@ -99,11 +99,11 @@ namespace NyaHooks {
 	}
 
 	namespace LateInitHook {
-		std::vector<void(*)()> aPreFunctions;
-		std::vector<void(*)()> aFunctions;
+		inline std::vector<void(*)()> aPreFunctions;
+		inline std::vector<void(*)()> aFunctions;
 
-		auto OrigFunction = (void(*)(int, char**))nullptr;
-		void HookedFunction(int a1, char** a2) {
+		inline auto OrigFunction = (void(*)(int, char**))nullptr;
+		inline void HookedFunction(int a1, char** a2) {
 			for (auto& func : aPreFunctions) {
 				func();
 			}
@@ -113,18 +113,18 @@ namespace NyaHooks {
 			}
 		}
 
-		void Init() {
+		inline void Init() {
 			if (OrigFunction) return;
 			OrigFunction = (void(*)(int, char**))NyaHookLib::PatchRelative(NyaHookLib::CALL, 0x6AF22F, &HookedFunction);
 		}
 	}
 	
 	namespace WorldServiceHook {
-		std::vector<void(*)()> aPreFunctions;
-		std::vector<void(*)()> aPostFunctions;
+		inline std::vector<void(*)()> aPreFunctions;
+		inline std::vector<void(*)()> aPostFunctions;
 
-		auto OrigFunction = (void(__thiscall*)(void*))nullptr;
-		void __thiscall HookedFunction(void* a1) {
+		inline auto OrigFunction = (void(__thiscall*)(void*))nullptr;
+		inline void __fastcall HookedFunction(void* a1) {
 			for (auto& func : aPreFunctions) {
 				func();
 			}
@@ -134,24 +134,24 @@ namespace NyaHooks {
 			}
 		}
 
-		void Init() {
+		inline void Init() {
 			if (OrigFunction) return;
 			OrigFunction = (void(__thiscall*)(void*))NyaHookLib::PatchRelative(NyaHookLib::CALL, 0x669B9C, &HookedFunction);
 		}
 	}
 
 	namespace SimServiceHook {
-		std::vector<void(*)()> aFunctions;
+		inline std::vector<void(*)()> aFunctions;
 
-		auto OrigFunction = (void(__thiscall*)(void*))nullptr;
-		void __thiscall HookedFunction(void* a1) {
+		inline auto OrigFunction = (void(__thiscall*)(void*))nullptr;
+		inline void __fastcall HookedFunction(void* a1) {
 			for (auto& func : aFunctions) {
 				func();
 			}
 			OrigFunction(a1);
 		}
 
-		void Init() {
+		inline void Init() {
 			if (OrigFunction) return;
 			OrigFunction = (void(__thiscall*)(void*))NyaHookLib::PatchRelative(NyaHookLib::CALL, 0x67BD33, &HookedFunction);
 		}
