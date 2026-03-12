@@ -158,15 +158,15 @@ public:
 	float GetValue(float input); // todo does this exist in uc?
 };
 
-auto bInitTicker = (void(*)(float))0x4B04E0;
-auto bATan = (int16_t(*)(float, float))0x4B1030;
+inline auto bInitTicker = (void(*)(float))0x4B04E0;
+inline auto bATan = (int16_t(*)(float, float))0x4B1030;
 
-auto& Tweak_ForceStraightPursuit = *(int*)0xD82118;
-auto& SkipMovies = *(bool*)0xDAA18C;
+inline auto& Tweak_ForceStraightPursuit = *(int*)0xD82118;
+inline auto& SkipMovies = *(bool*)0xDAA18C;
 
-auto LZDecompress = (uint32_t(*)(uint8_t* pSrc, uint8_t* pDst))0x6A6390;
+inline auto LZDecompress = (uint32_t(*)(uint8_t* pSrc, uint8_t* pDst))0x6A6390;
 
-auto& GameWindow = *(HWND*)0xDF1DF8;
-auto& GameD3DDevice = *(IDirect3DDevice9**)0xEA0110;
+inline auto& GameWindow = *(HWND*)0xDF1DF8;
+inline auto& GameD3DDevice = *(IDirect3DDevice9**)0xEA0110;
 
 #include "nfsuchooks.h"
