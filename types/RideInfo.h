@@ -124,6 +124,7 @@ class eLightMaterial;
 class DBCarPart;
 
 class VinylColorPartInfo {
+public:
 	uint8_t hue;
 	uint8_t saturation;
 	uint8_t brightness;
